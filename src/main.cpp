@@ -16,8 +16,8 @@
 Servo servo;
 int steerValue = 90;
 
-void servoSweep(Servo &servo,int degree,int delay_);
-void servoSunTracking(Servo &servo,int threshold = 200);
+void servoSweep(Servo &servo, int degree, int delay_);
+int servoSunTracking(int valueL, int valueR, int threshold = 200);
 
 void setup() {
   servo.attach(servo_pin);
@@ -26,22 +26,13 @@ void setup() {
 }
 
 void loop() {
-  //servoSweep(servo,180,30);
 
   int valueL = analogRead(photoresistor_left_pin);
   int valueR = analogRead(photoresistor_right_pin);
-  
-  int error = valueL - valueR;
- 
-  if (error > 200) {
-    steerValue += 1;
-  } else if (error < -200) {
-    steerValue -= 1;
-  }
 
-  if (steerValue > 180) {steerValue = 180;}
-  else if (steerValue < 0) {steerValue = 0;}
+  int steerValue = servoSunTracking(valueL,valueR);
   servo.write(steerValue);
+
 
   Serial.print(">Right:");
   Serial.println(valueR);
@@ -67,10 +58,7 @@ void servoSweep(Servo &servo,int degree,int delay_) {
   }
 }
 
-void servoSunTracking(Servo &servo,int threshold = 200) {
-  int valueL = analogRead(photoresistor_left_pin);
-  int valueR = analogRead(photoresistor_right_pin);
-  
+int servoSunTracking(int valueL, int valueR, int threshold) {
   int error = valueL - valueR;
 
   if (error > threshold) {
@@ -81,5 +69,6 @@ void servoSunTracking(Servo &servo,int threshold = 200) {
 
   if (steerValue > 180) {steerValue = 180;}
   else if (steerValue < 0) {steerValue = 0;}
-  servo.write(steerValue);
+
+  return steerValue;
 }
