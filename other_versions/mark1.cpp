@@ -17,24 +17,21 @@
 Servo servo_low;
 Servo servo_high;
 
-int DELAY = 20;
-int RANGE = 180;
-
 void setup() {
   servo_low.attach(servo_low_pin);
   servo_high.attach(servo_high_pin);
 }
 
 void loop() {
-    for (int i=0;i<=RANGE;i++) {
+    for (int i=0;i<=180;i++) {
     servo_low.write(i);
     servo_high.write(i);
-    delay(DELAY);
+    delay(20);
   }
-  for (int i=RANGE;i>=0;i--) {
+  for (int i=180;i>=0;i--) {
     servo_low.write(i);
     servo_high.write(i);
-    delay(DELAY);
+    delay(20);
   }
 }
 
