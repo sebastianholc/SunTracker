@@ -5,6 +5,13 @@
 
 
 class SunTracker {
+
+    /*
+        pr - photoresistor
+    */
+
+
+
 public:
 
     // Pins
@@ -55,7 +62,7 @@ public:
          steering only bottom servo.
         */
 
-        measurePhotoresistorValues();
+        measurePhotoresistorsValues();
         
         int error_bottom = pr_BottomLeft_val - pr_BottomRight_val;
         int error_top = pr_TopLeft_val - pr_TopRight_val;
@@ -75,18 +82,20 @@ public:
         servo_bottom.write(servo_bottom_steer_val);
 
     }
-
     void trackDualAxis() {
 
     }
 
-    void measurePhotoresistorValues() {
+
+    void measurePhotoresistorsValues() {
         pr_BottomLeft_val = analogRead(pr_BottomLeft_pin);
         pr_BottomRight_val = analogRead(pr_BottomRight_pin);
         pr_TopLeft_val = analogRead(pr_TopLeft_pin);
         pr_TopRight_val = analogRead(pr_TopRight_pin);
     }
-
+    uint16_t getPhotoresistorsValues() {
+        return pr_BottomLeft_val, pr_BottomRight_val, pr_TopLeft_val, pr_TopRight_val;
+    }
 
 
 };

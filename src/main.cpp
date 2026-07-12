@@ -1,41 +1,19 @@
-/*
-  Im więcej światła tym większa wartość odczytana z czujnika
+#include "SunTracker.h"
 
-  prawy fotorezystor do pinu A0
-  lewy fotorezystor do pinu A1
-
-*/
-
-#include <Arduino.h>
-#include <Servo.h>
-
-#define servo_low_pin 5
-#define servo_high_pin 3
-#define photoresistor_right_pin A0 
-#define photoresistor_left_pin A1
-
-Servo servo_low;
-Servo servo_high;
-
-int DELAY = 20;
-int RANGE = 180;
+SunTracker suntracker(A0,A1,A2,A3,5,3);
 
 void setup() {
-  servo_low.attach(servo_low_pin);
-  servo_high.attach(servo_high_pin);
+  
 }
 
 void loop() {
-    for (int i=0;i<=RANGE;i++) {
-    servo_low.write(i);
-    servo_high.write(i);
-    delay(DELAY);
-  }
-  for (int i=RANGE;i>=0;i--) {
-    servo_low.write(i);
-    servo_high.write(i);
-    delay(DELAY);
-  }
+  uint16_t bl, br, tl, tr = suntracker.getPhotoresistorsValues();
+
+  suntracker.trackHorizontal(200);
+
+  delay(1000);
+
+
 }
 
 
