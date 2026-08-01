@@ -10,9 +10,12 @@ void setup() {
 void loop() {
   //uint16_t bl, br, tl, tr = suntracker.getPhotoresistorsValues();
 
-  //suntracker.trackHorizontal(200,30);
-  suntracker.measurePhotoresistorsValues();
+  //suntracker.measurePhotoresistorsValues();
+  //suntracker.trackHorizontal(200,90);
+  
+  suntracker.setPosition(90,90);
 
+  /*
   Serial.print(">Bottom Left:");
   Serial.println(suntracker.pr_BottomLeft_val);
 
@@ -24,7 +27,7 @@ void loop() {
 
   Serial.print(">Top Right:");
   Serial.println(suntracker.pr_TopRight_val);
-
+  */
   
 
   delay(1000);

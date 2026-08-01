@@ -51,11 +51,19 @@ public:
         this -> servo_bottom_pin = servo_bottom_pin;
         this -> servo_top_pin = servo_top_pin;
 
-        //servo_bottom.attach(servo_bottom_pin);
-        //servo_top.attach(servo_top_pin);
+        servo_bottom.attach(servo_bottom_pin);
+        servo_top.attach(servo_top_pin);
     }
 
     // Functions
+    void setPosition(uint8_t servo_bottom_steer_val,uint8_t servo_top_steer_val) {
+        this -> servo_bottom_steer_val = servo_bottom_steer_val;
+        this -> servo_top_steer_val = servo_top_steer_val;
+
+        servo_bottom.write(this -> servo_bottom_steer_val);
+        servo_top.write(this -> servo_top_steer_val);
+    }
+
     void trackHorizontal(int threshold,uint8_t servo_top_steer_val) {  
         /*
          using both pairs of photoresistors for more precise measurment.
