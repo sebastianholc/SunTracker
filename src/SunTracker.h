@@ -51,12 +51,12 @@ public:
         this -> servo_bottom_pin = servo_bottom_pin;
         this -> servo_top_pin = servo_top_pin;
 
-        servo_bottom.attach(servo_bottom_pin);
-        servo_top.attach(servo_top_pin);
+        //servo_bottom.attach(servo_bottom_pin);
+        //servo_top.attach(servo_top_pin);
     }
 
     // Functions
-    void trackHorizontal(int threshold) {  
+    void trackHorizontal(int threshold,uint8_t servo_top_steer_val) {  
         /*
          using both pairs of photoresistors for more precise measurment.
          steering only bottom servo.
@@ -80,6 +80,8 @@ public:
 
         // Steering with calculated value
         servo_bottom.write(servo_bottom_steer_val);
+        this->servo_top_steer_val = servo_top_steer_val;
+        servo_top.write(servo_top_steer_val);
 
     }
     void trackDualAxis() {
@@ -94,6 +96,7 @@ public:
         pr_TopRight_val = analogRead(pr_TopRight_pin);
     }
     uint16_t getPhotoresistorsValues() {
+        measurePhotoresistorsValues();
         return pr_BottomLeft_val, pr_BottomRight_val, pr_TopLeft_val, pr_TopRight_val;
     }
 
