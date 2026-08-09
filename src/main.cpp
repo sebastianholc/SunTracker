@@ -3,7 +3,9 @@
 SunTracker suntracker(A0,A1,A2,A3,5,3);
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
+  suntracker.initializeServos();
+  
   
 }
 
@@ -13,8 +15,12 @@ void loop() {
   //suntracker.measurePhotoresistorsValues();
   //suntracker.trackHorizontal(200,90);
   
-  suntracker.setPosition(90,90);
+  suntracker.setPosition(90,180);
 
+
+  //int position = suntracker.servo_top.read();
+
+  //Serial.println(position);
   /*
   Serial.print(">Bottom Left:");
   Serial.println(suntracker.pr_BottomLeft_val);
@@ -30,7 +36,7 @@ void loop() {
   */
   
 
-  delay(1000);
+  //delay(1000);
 
 
 }
