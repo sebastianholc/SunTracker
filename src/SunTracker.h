@@ -33,6 +33,10 @@ public:
     uint8_t servo_bottom_steer_val;
     uint8_t servo_top_steer_val;
 
+    // Other
+    const uint8_t MAX_TILT_DOWN = 90;
+    const uint8_t MAX_TILT_UP = 140;
+
 
     // Objects
     Servo servo_bottom;
@@ -78,30 +82,60 @@ public:
 
         measurePhotoresistorsValues();
         
-        //int error_bottom = pr_BottomLeft_val - pr_BottomRight_val;
+        int error_bottom = pr_BottomLeft_val - pr_BottomRight_val;
         int error_top = pr_TopLeft_val - pr_TopRight_val;
 
-        //int error_final = (error_bottom + error_top) / 2;
-
-        if (error_top > threshold) {
+        if (error_top > threshold || error_bottom > threshold) {
             if (servo_bottom_steer_val > 0) {
                 servo_bottom_steer_val -= 1;
             }
-        } else if (error_top < -threshold) {
+        } else if (error_top < -threshold || error_bottom < -threshold) {
             if (servo_bottom_steer_val < 180) {
                 servo_bottom_steer_val += 1;
             }
         }
 
         // saving photoresistors values to suntracker variables
-        this -> servo_bottom_steer_val = servo_bottom_steer_val;
+        //this -> servo_bottom_steer_val = servo_bottom_steer_val;
         this -> servo_top_steer_val = servo_top_steer_val;
 
         steerServos();
 
     }
-    void trackDualAxis() {
 
+    void trackDualAxis(int threshold) {
+
+        measurePhotoresistorsValues();
+
+        // horizontal
+        int error_bottom = pr_BottomLeft_val - pr_BottomRight_val;
+        int error_top = pr_TopLeft_val - pr_TopRight_val;
+
+        if (error_top > threshold || error_bottom > threshold) {
+            if (servo_bottom_steer_val > 0) {
+                servo_bottom_steer_val -= 1;
+            }
+        } else if (error_top < -threshold || error_bottom < -threshold) {
+            if (servo_bottom_steer_val < MAX_TILT_UP) {
+                servo_bottom_steer_val += 1;
+            }
+        }
+
+        // vertical
+        int error_left = pr_BottomLeft_val - pr_TopLeft_val;
+        int error_right = pr_BottomRight_val - pr_TopRight_val;
+
+        if (error_left > threshold || error_right > threshold) {
+            if (servo_top_steer_val > MAX_TILT_DOWN) {
+                servo_top_steer_val -= 1;
+            }
+        } else if (error_left < -threshold || error_right < -threshold) {
+            if (servo_top_steer_val < MAX_TILT_UP) {
+                servo_top_steer_val += 1;
+            }
+        }
+
+        steerServos();
     }
 
 
