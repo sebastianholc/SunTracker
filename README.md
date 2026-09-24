@@ -1,4 +1,4 @@
-🇬🇧 [English version](#SunTracker-[EN])
+🇬🇧 [English version](#suntracker-en)
 
 ---
 # SunTracker [PL]
