@@ -1,7 +1,7 @@
-🇬🇧 [English version](#SunTracker-🇬🇧)
+🇬🇧 [English version](#SunTracker-[EN])
 
 ---
-# SunTracker 🇵🇱
+# SunTracker [PL]
 
 
 
@@ -61,7 +61,7 @@ Główne tryby pracy opierają się na dwóch metodach:
 ---
 
 
-# SunTracker 🇬🇧 
+# SunTracker [EN]
 
 
 
