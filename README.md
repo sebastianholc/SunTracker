@@ -1,7 +1,7 @@
-🇬🇧 [English version](#dual-axis-light-source-tracking-system-solar-tracker)
+🇬🇧 [English version](#SunTracker-🇬🇧)
 
 ---
-# SunTracker
+# SunTracker 🇵🇱
 
 
 
@@ -61,7 +61,7 @@ Główne tryby pracy opierają się na dwóch metodach:
 ---
 
 
-# SunTracker
+# SunTracker 🇬🇧 
 
 
 
