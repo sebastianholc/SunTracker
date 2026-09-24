@@ -15,23 +15,10 @@ void loop() {
   // threshold = 200, top servo value = 120
   //suntracker.trackHorizontal(200,120);
 
-  suntracker.trackDualAxis(200);
+  suntracker.trackDualAxis(100);
   
 
-  // Serial.print(">Top Left:");
-  // Serial.println(suntracker.pr_TopLeft_val);
-
-  // Serial.print(">Top Right:");
-  // Serial.println(suntracker.pr_TopRight_val);
-
-  // Serial.print(">Bottom Left:");
-  // Serial.println(suntracker.pr_BottomLeft_val);
-
-  // Serial.print(">Bottom Right:");
-  // Serial.println(suntracker.pr_BottomRight_val);
-
-  // Serial.print(">Servo steer value:");
-  // Serial.println(suntracker.servo_bottom_steer_val);
+  suntracker.infoPrint();
   
   
 

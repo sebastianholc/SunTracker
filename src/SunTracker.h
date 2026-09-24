@@ -150,7 +150,26 @@ public:
         return pr_BottomLeft_val, pr_BottomRight_val, pr_TopLeft_val, pr_TopRight_val;
     }
 
+    void infoPrint() {
+        Serial.print(">Top Left:");
+        Serial.println(pr_TopLeft_val);
 
+        Serial.print(">Top Right:");
+        Serial.println(pr_TopRight_val);
+
+        Serial.print(">Bottom Left:");
+        Serial.println(pr_BottomLeft_val);
+
+        Serial.print(">Bottom Right:");
+        Serial.println(pr_BottomRight_val);
+
+        Serial.print(">Servo bottom steer value:");
+        Serial.println(servo_bottom_steer_val);
+
+        Serial.print(">Servo top steer value:");
+        Serial.println(servo_top_steer_val);
+
+    }
 };
 
 
